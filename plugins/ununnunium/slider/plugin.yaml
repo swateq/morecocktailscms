@@ -1,0 +1,11 @@
+plugin:
+    name: 'ununnunium.slider::lang.plugin.name'
+    description: 'ununnunium.slider::lang.plugin.description'
+    author: Ununnunium
+    icon: oc-icon-image
+    homepage: ''
+navigation:
+    slider:
+        label: Slider
+        url: ununnunium/slider/sliders
+        icon: icon-life-ring

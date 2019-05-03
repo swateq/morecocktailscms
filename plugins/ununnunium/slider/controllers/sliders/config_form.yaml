@@ -1,0 +1,10 @@
+name: Sliders
+form: $/ununnunium/slider/models/slider/fields.yaml
+modelClass: Ununnunium\Slider\Models\Slider
+defaultRedirect: ununnunium/slider/sliders
+create:
+    redirect: 'ununnunium/slider/sliders/update/:id'
+    redirectClose: ununnunium/slider/sliders
+update:
+    redirect: ununnunium/slider/sliders
+    redirectClose: ununnunium/slider/sliders

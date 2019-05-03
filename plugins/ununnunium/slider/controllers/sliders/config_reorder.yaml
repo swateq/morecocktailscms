@@ -1,0 +1,4 @@
+title: Sliders
+modelClass: Ununnunium\Slider\Models\Slider
+toolbar:
+    buttons: reorder_toolbar

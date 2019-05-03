@@ -2,75 +2,57 @@ title = "Home"
 url = "/"
 layout = "default"
 is_hidden = 0
+
+[builderList]
+modelClass = "Ununnunium\Slider\Models\Slider"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
 ==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
 <body>
     <section class="flexslider" data-section="welcome">
       <ul class="slides">
-        <li style="background-image: url('{{ 'assets/images/pierwszy_pasek.jpg'|theme }}')" class="overlay" data-stellar-background-ratio="0.5">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
-                  <h1 class="primary-heading">Witamy</h1>
-                  <h3 class="secondary-heading">Morecocktails</h3>
-                  <!-- <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, magni.</a></p> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url('{{ 'assets/images/drugi_pasek.jpg'|theme }}')" class="overlay" data-stellar-background-ratio="0.5">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
-                  <h1 class="primary-heading">Witamy</h1>
-                  <h3 class="secondary-heading">Morecocktails</h3>
-                  <!-- <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, magni.</a></p> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url('{{ 'assets/images/trzeci_pasek.jpg'|theme }}')" class="overlay" data-stellar-background-ratio="0.5">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
-                  <h1 class="primary-heading">Witamy</h1>
-                  <h3 class="secondary-heading">Morecocktails</h3>
-                  <!-- <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, magni.</a></p> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url('{{ 'assets/images/hero_bg_1.jpg'|theme }}')" class="overlay" data-stellar-background-ratio="0.5">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
-                  <h1 class="primary-heading">Witamy</h1>
-                  <h3 class="secondary-heading">Morecocktails</h3>
-                  <!-- <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, magni.</a></p> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url('{{ 'assets/images/hero_bg_3.jpg'|theme }}')" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
-                  <h1 class="primary-heading">Witamy</h1>
-                <h3 class="secondary-heading">Morecocktails</h3>
-                <!-- <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, magni.</a></p> -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
+
+    {% for record in records %}
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                {% endif %}
+
+                <li style="background-image: url('{{ record.image.path | resize(1920,1080, false, { mode: 'crop', quality: '95', extension: 'jpeg' }) }}')" class="overlay" data-stellar-background-ratio="0.5">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                          <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
+                            <h1 class="primary-heading">{{ record.title }}</h1>
+                            <h3 class="secondary-heading">{{ record.text }}</h3>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+
+                {% if detailsPage %}
+                    </a>
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
       </ul>
     </section>
 
