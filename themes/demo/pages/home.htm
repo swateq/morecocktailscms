@@ -3,7 +3,7 @@ url = "/"
 layout = "default"
 is_hidden = 0
 ==
-  <body>
+<body>
     <section class="flexslider" data-section="welcome">
       <ul class="slides">
         <li style="background-image: url('{{ 'assets/images/pierwszy_pasek.jpg'|theme }}')" class="overlay" data-stellar-background-ratio="0.5">
@@ -83,9 +83,7 @@ is_hidden = 0
               <span class="seperator">* * *</span>
             </div>
             <p>
-            Zajmujemy się profesjonalnymi usługami barmańskimi na możliwie każdej okoliczności, nasze wieloletnie doświadczenie oraz udziały w nielicznych prestiżowych konkursach barmańskich pozwala nam zaskoczyć każdego najbardziej wymagającego gościa przed naszym barem. Jeśli szukasz rozrywki i mocnych wrażeń zapraszamy do skontaktowania się z nami,
-            a na pewno nie pożałujecie, nasze koktajle tworzone są z pełnym zaangażowaniem i pasja do wykonywanej przez nas pracy, ponieważ dbamy o każdy drobny detal który w ogólnej kompozycji tworzy małe niebo w waszych ustach.
-
+                {% content 'hello' %}
             </p>
             <p><a href="#" class="probootstrap-custom-link" data-nav-section="events">Galeria</a></p>
           </div>
@@ -170,15 +168,11 @@ is_hidden = 0
         <div class="row">
           <div class="col-md-5 text-center probootstrap-animate">
             <div class="probootstrap-heading dark">
-              <h1 class="primary-heading">Dysponujemy</h1>
-              <h3 class="secondary-heading">mobilnymi barami</h3>
+              <h1 class="primary-heading">Oferta</h1>
               <span class="seperator">* * *</span>
             </div>
             <p>
-            Dysponujemy mobilnymi barami które można przewieść i rozstawić w dosłownie każdym miejscu, oferujemy również profesjonalny sprzęt dzięki któremu nasza praca jest wykonywana na tak wysokim poziomie. Nie musisz martwić się o lód, szkło , alkohol czy inne dodatki.
-            Dysponujemy dla was wszystkim co niezbędne.
-            Jeżeli chcesz żeby to właśnie Twoja impreza była jedyna w swoim rodzaju
-            odezwij się, a błyskawicznie odpowiemy na wiadomość oraz przedstawimy wszelkie informacje .
+                {% content 'Oferta' %}
             </p>
           </div>
           <div class="col-md-6 col-md-push-1 probootstrap-animate">
@@ -188,6 +182,26 @@ is_hidden = 0
         <!-- END row -->
       </div>
     </section>
+
+    <section class="probootstrap-section" style="background-color=#8b8e94">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-5 text-center probootstrap-animate">
+                  <div class="probootstrap-heading dark">
+                    <h1 class="primary-heading">Imprezy</h1>
+                    <h3 class="secondary-heading">firmowe</h3>
+                    <span class="seperator">* * *</span>
+                  </div>
+                     {% content 'imprezy_firmowe/Lewa_strona' %}
+                </div>
+                <div class="col-md-6 col-md-push-1 probootstrap-animate">
+                        {% content('imprezy_firmowe/Prawa_strona') %}
+
+                </div>
+              </div>
+              <!-- END row -->
+            </div>
+          </section>
 
     <section class="probootstrap-section-bg overlay" style="background-image: url({{ 'assets/images/hero_bg_2.jpg'|theme}});"  data-stellar-background-ratio="0.5" data-section="events">
       <div class="container">
@@ -338,8 +352,7 @@ is_hidden = 0
               <h1 class="primary-heading">Kontakt</h1>
             </div>
             <p>
-              Oferujemy ciekawe propozycje na wesela oraz imprezy organizowane od listopada do kwietnia zapraszamy do kontaktu.
-              Na wesela oraz imprezy organizowane w tygodniu oferujemy Państwu 20% rabatu na sama usługę z naszej strony .
+                {% content 'Kontakt' %}
             </p>
           </div>
           <div class="col-md-6 col-md-push-1 probootstrap-animate">
