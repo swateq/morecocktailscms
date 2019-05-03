@@ -21,576 +21,529 @@ pageNumber = "{{ :page }}"
 {% set detailsUrlParameter = builderList.detailsUrlParameter %}
 <body>
     <section class="flexslider" data-section="welcome">
-      <ul class="slides">
-
-    {% for record in records %}
-            {# Use spaceless tag to remove spaces inside the A tag. #}
-            {% spaceless %}
-                {% if detailsPage %}
-                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
-                {% endif %}
-
-                <li style="background-image: url('{{ record.image.path | resize(1920,1080, false, { mode: 'crop', quality: '95', extension: 'jpeg' }) }}')" class="overlay" data-stellar-background-ratio="0.5">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                          <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
+        <ul class="slides">
+        {% for record in records %}
+            <li style="background-image: url('{{ record.image.path | resize(1920,1080, false, { mode: 'crop', quality: '95', extension: 'jpeg' }) }}')" class="overlay" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="probootstrap-slider-text text-center probootstrap-animate probootstrap-heading">
                             <h1 class="primary-heading">{{ record.title }}</h1>
                             <h3 class="secondary-heading">{{ record.text }}</h3>
-
-                          </div>
                         </div>
-                      </div>
                     </div>
-                  </li>
-
-
-                {% if detailsPage %}
-                    </a>
-                {% endif %}
-            {% endspaceless %}
-
-    {% else %}
-        <li class="no-data">{{ noRecordsMessage }}</li>
-    {% endfor %}
-      </ul>
+                </div>
+            </div>
+            </li>
+        {% else %}
+        <li class="no-data">
+            {{ noRecordsMessage }}
+        </li>
+        {% endfor %}
+        </ul>
     </section>
 
-    <section class="probootstrap-section probootstrap-bg-white">
-      <div class="container">
+<section class="probootstrap-section probootstrap-bg-white">
+    <div class="container">
         <div class="row">
-          <div class="col-md-5 text-center probootstrap-animate">
-            <div class="probootstrap-heading dark">
-              <h1 class="primary-heading">Witamy</h1>
-              <span class="seperator">* * *</span>
-            </div>
-            <p>
-                {% content 'hello' %}
-            </p>
-            <p><a href="#" class="probootstrap-custom-link" data-nav-section="events">Galeria</a></p>
-          </div>
-          <div class="col-md-6 col-md-push-1 probootstrap-animate">
-            <p>
-              <img src="{{ 'assets/images/bar.jpg'|theme}}" alt="Barman pokaz" class="img-responsive"></p>
-          </div>
-        </div>
-        <!-- END row -->
-      </div>
-    </section>
-
-    <section class="probootstrap-section-bg overlay" style="background-image: url('{{ 'assets/images/hero_bg_4.jpg'|theme }}')" data-stellar-background-ratio="0.5" data-section="specialties">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center probootstrap-animate">
-            <div class="probootstrap-heading">
-              <h2 class="primary-heading">Poznaj</h2>
-              <h3 class="secondary-heading">Nasze specjały</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-     <!-- probootstrap-bg-white -->
-    <section class="probootstrap-section">
-      <div class="container">
-        <div class="row">
-          <div class="probootstrap-cell-retro">
-            <div class="half">
-              <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                <div class="image" style="background-image: url('{{ 'assets/images/drink_7.jpg'|theme }}')"></div>
-                <div class="text text-center">
-                  <h3>Daiquiri</h3>
-                  <p>koktail po prostu nic dodać nic ująć jeden z moich ulubionych, słotko kwaśny smak zbalansowany orginalnym rumem pozwoli nam na chwile relaksu prostota trzech składników rumu , syropu cukrowego oraz soku z cytryny daje piorunujące doznania smakowe</p>
-                </div>
-              </div>
-              <div class="probootstrap-cell reverse probootstrap-animate" data-animate-effect="fadeIn">
-                <div class="image" style="background-image: url('{{ 'assets/images/drink_4.jpg'|theme }}')"></div>
-                <div class="text text-center">
-                  <h3>Forest is Green</h3>
-                  <p>jest to kompozycja naszego autorstwa na bazie syropu z zielonych jablek oraz kilku innych składników których nie wolno nam zdradzać lecz zapewniam Państwa taa zieleń potrafi zaskoczyć! Do zobaczenia przy barze :)  </p>
-                </div>
-              </div>
-              <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                <div class="image" style="background-image: url('{{ 'assets/images/drink_8.jpg'|theme }}')"></div>
-                <div class="text text-center">
-                  <h3>Passion Fruit</h3>
-                  <p>jest koktailem idealnym na upalne dni , gwarantujemy że podczas kosztowania tego trunku przeniosą wrócą do was wakacyjne wspomnienia</p>
-                </div>
-              </div>
-            </div>
-            <div class="half">
-              <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                <div class="image" style="background-image: url('{{ 'assets/images/drink_1.jpg'|theme }}')"></div>
-                <div class="text text-center">
-                  <p>Koktajl zainspirowany pewnym szkoleniem z osobą która zaszczepiła we mnie barmańskiego "bakcyla" jest on idealnie zbalansowany delikatnie pikantny przez czerwony pieprz a zarazem słodki z nutą malin - całość jest zwinczeniem cogniaku Hennessy</p>
-                </div>
-              </div>
-              <div class="probootstrap-cell reverse probootstrap-animate" data-animate-effect="fadeIn">
-                <div class="image" style="background-image: url('{{ 'assets/images/drink_2.jpg'|theme }}')"></div>
-                <div class="text text-center">
-                  <h3>Mojito</h3>
-                  <p>klasyczny kubański drink który idealnie pomaga w upalne dni daje ożeźwienie oraz energie do dalszej zabawy, kompozycja kluczowych składników rumu, mięty, limonki, brązowego cukru dopelniony wodą gazowanej zapewni niepowtarzalne wrazenia smakowe.</p>
-                </div>
-              </div>
-              <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
-                <div class="image" style="background-image: url('{{ 'assets/images/drink_4.jpg'|theme }}')"></div>
-                <div class="text text-center">
-                  <h3>Whisky sour</h3>
-                  <p>to klasyczny koktajl, który dzięki prostocie połączenia składników a zarazem walorom smakowym pozstaje jednym z najpopularniejszych drinków na świecie. Połączenie whisky, soku z cytryny oraz syropu cukrowego pozwala uzyskać bardzo orzeźwiający, wyrazisty koktajl, którego każdy z miłośników whisky musi przynajmniej raz spróbować.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="probootstrap-section probootstrap-bg-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5 text-center probootstrap-animate">
-            <div class="probootstrap-heading dark">
-              <h1 class="primary-heading">Oferta</h1>
-              <span class="seperator">* * *</span>
-            </div>
-            <p>
-                {% content 'Oferta' %}
-            </p>
-          </div>
-          <div class="col-md-6 col-md-push-1 probootstrap-animate">
-            <p><img src="{{ 'assets/images/img_2.jpg'|theme}}" alt="Barman przenośny bar" class="img-responsive"></p>
-          </div>
-        </div>
-        <!-- END row -->
-      </div>
-    </section>
-
-    <section class="probootstrap-section" style="background-color=#8b8e94">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-5 text-center probootstrap-animate">
-                  <div class="probootstrap-heading dark">
-                    <h1 class="primary-heading">Imprezy</h1>
-                    <h3 class="secondary-heading">firmowe</h3>
+            <div class="col-md-5 text-center probootstrap-animate">
+                <div class="probootstrap-heading dark">
+                    <h1 class="primary-heading">Witamy</h1>
                     <span class="seperator">* * *</span>
-                  </div>
-                     {% content 'imprezy_firmowe/Lewa_strona' %}
                 </div>
-                <div class="col-md-6 col-md-push-1 probootstrap-animate">
-                        {% content('imprezy_firmowe/Prawa_strona') %}
-
-                </div>
-              </div>
-              <!-- END row -->
+                <p>
+                {% content 'hello' %}
+                </p>
+                <p>
+                    <a href="#" class="probootstrap-custom-link" data-nav-section="events">Galeria</a>
+                </p>
             </div>
-          </section>
-
-    <section class="probootstrap-section-bg overlay" style="background-image: url({{ 'assets/images/hero_bg_2.jpg'|theme}});"  data-stellar-background-ratio="0.5" data-section="events">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center probootstrap-animate">
-            <div class="probootstrap-heading">
-              <h2 class="primary-heading">Galeria</h2>
+            <div class="col-md-6 col-md-push-1 probootstrap-animate">
+                <p>
+                    <img src="{{ 'assets/images/bar.jpg'|theme}}" alt="Barman pokaz" class="img-responsive">
+                </p>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-
-              <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <a href="{{ 'assets/images/hero_bg_1.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
-                      <img src="{{ 'assets/images/hero_bg_1.jpg'|theme}}" itemprop="thumbnail" alt="Barman koktail" />
-                  </a>
-                </figure>
-
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <a href="{{ 'assets/images/hero_bg_2.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
-                      <img src="{{ 'assets/images/hero_bg_2.jpg'|theme}}" itemprop="thumbnail" alt="Barman konkurs" />
-                  </a>
-                </figure>
-
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <a href="{{ 'assets/images/hero_bg_3.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
-                    <img src="{{ 'assets/images/hero_bg_3.jpg'|theme}}" itemprop="thumbnail" alt="Barman drink" />
-                  </a>
-                </figure>
-
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <a href="{{ 'assets/images/pierwszy_pasek.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
-                    <img src="{{ 'assets/images/pierwszy_pasek.jpg'|theme}}" itemprop="thumbnail" alt="Barman drink" />
-                  </a>
-                </figure>
-
-                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                  <a href="{{ 'assets/images/drugi_pasek.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
-                    <img src="{{ 'assets/images/drugi_pasek.jpg'|theme}}" itemprop="thumbnail" alt="Barman drink" />
-                  </a>
-                </figure>
-              </div>
-            </div>
-
-
-  </div>
-
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe.
-         It's a separate element, as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
-        <!-- don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
         </div>
+    </div>
+</section>
 
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
+<section class="probootstrap-section-bg overlay" style="background-image: url('{{ 'assets/images/hero_bg_4.jpg'|theme }}')" data-stellar-background-ratio="0.5" data-section="specialties">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center probootstrap-animate">
+                <div class="probootstrap-heading">
+                    <h2 class="primary-heading">Poznaj</h2>
+                    <h3 class="secondary-heading">Nasze specjały</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row">
+            <div class="probootstrap-cell-retro">
+                <div class="half">
+                    <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
+                        <div class="image" style="background-image: url('{{ 'assets/images/drink_7.jpg'|theme }}')"></div>
+                        <div class="text text-center">
+                            <h3>Daiquiri</h3>
+                            <p>koktail po prostu nic dodać nic ująć jeden z moich ulubionych, słotko kwaśny smak zbalansowany orginalnym rumem pozwoli nam na chwile relaksu prostota trzech składników rumu , syropu cukrowego oraz soku z cytryny daje piorunujące doznania smakowe</p>
+                        </div>
+                    </div>
+                    <div class="probootstrap-cell reverse probootstrap-animate" data-animate-effect="fadeIn">
+                        <div class="image" style="background-image: url('{{ 'assets/images/drink_4.jpg'|theme }}')"></div>
+                        <div class="text text-center">
+                            <h3>Forest is Green</h3>
+                            <p>jest to kompozycja naszego autorstwa na bazie syropu z zielonych jablek oraz kilku innych składników których nie wolno nam zdradzać lecz zapewniam Państwa taa zieleń potrafi zaskoczyć! Do zobaczenia przy barze :)  </p>
+                        </div>
+                    </div>
+                    <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
+                        <div class="image" style="background-image: url('{{ 'assets/images/drink_8.jpg'|theme }}')"></div>
+                        <div class="text text-center">
+                            <h3>Passion Fruit</h3>
+                            <p>jest koktailem idealnym na upalne dni , gwarantujemy że podczas kosztowania tego trunku przeniosą wrócą do was wakacyjne wspomnienia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
+                        <div class="image" style="background-image: url('{{ 'assets/images/drink_1.jpg'|theme }}')"></div>
+                        <div class="text text-center">
+                            <p>Koktajl zainspirowany pewnym szkoleniem z osobą która zaszczepiła we mnie barmańskiego "bakcyla" jest on idealnie zbalansowany delikatnie pikantny przez czerwony pieprz a zarazem słodki z nutą malin - całość jest zwinczeniem cogniaku Hennessy</p>
+                        </div>
+                    </div>
+                    <div class="probootstrap-cell reverse probootstrap-animate" data-animate-effect="fadeIn">
+                        <div class="image" style="background-image: url('{{ 'assets/images/drink_2.jpg'|theme }}')"></div>
+                        <div class="text text-center">
+                            <h3>Mojito</h3>
+                            <p>klasyczny kubański drink który idealnie pomaga w upalne dni daje ożeźwienie oraz energie do dalszej zabawy, kompozycja kluczowych składników rumu, mięty, limonki, brązowego cukru dopelniony wodą gazowanej zapewni niepowtarzalne wrazenia smakowe.</p>
+                        </div>
+                    </div>
+                    <div class="probootstrap-cell probootstrap-animate" data-animate-effect="fadeIn">
+                        <div class="image" style="background-image: url('{{ 'assets/images/drink_4.jpg'|theme }}')"></div>
+                        <div class="text text-center">
+                            <h3>Whisky sour</h3>
+                            <p>to klasyczny koktajl, który dzięki prostocie połączenia składników a zarazem walorom smakowym pozstaje jednym z najpopularniejszych drinków na świecie. Połączenie whisky, soku z cytryny oraz syropu cukrowego pozwala uzyskać bardzo orzeźwiający, wyrazisty koktajl, którego każdy z miłośników whisky musi przynajmniej raz spróbować.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-          </div>
-
         </div>
+    </div>
+</section>
 
-</div>
-          </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="probootstrap-section">
-      <div class="container">
+<section class="probootstrap-section probootstrap-bg-white">
+    <div class="container">
         <div class="row">
-          <div class="col-md-4 col-sm-4 probootstrap-animate">
-            <div class="probootstrap-block-image">
-              <figure><images src="{{ 'assets/images/img_square_2.jpg'|theme}}" alt="Barman Wadowice i okolice"></figure>
+            <div class="col-md-5 text-center probootstrap-animate">
+                <div class="probootstrap-heading dark">
+                    <h1 class="primary-heading">Oferta</h1>
+                    <span class="seperator">* * *</span>
+                </div>
+            <p>
+            {% content 'Oferta' %}
+            </p>
             </div>
-          </div>
-          <div class="col-md-4 col-sm-4 probootstrap-animate">
-            <div class="probootstrap-block-image">
-              <figure><images src="{{ 'assets/images/img_square_3.jpg'|theme}}" alt="Barman przenośny bar"></figure>
+            <div class="col-md-6 col-md-push-1 probootstrap-animate">
+                <p>
+                    <img src="{{ 'assets/images/img_2.jpg'|theme}}" alt="Barman przenośny bar" class="img-responsive">
+                </p>
             </div>
-          </div>
-          <div class="col-md-4 col-sm-4 probootstrap-animate">
-            <div class="probootstrap-block-image">
-              <figure><images src="{{ 'assets/images/img_square_4.jpg'|theme}}" alt="Barman wesele"></figure>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <section class="probootstrap-section probootstrap-bg-white" data-section="contact">
-      <div class="container">
+<section class="probootstrap-section" style="background-color=#8b8e94">
+    <div class="container">
         <div class="row">
-          <div class="col-md-5 text-center probootstrap-animate">
+            <div class="col-md-5 text-center probootstrap-animate">
             <div class="probootstrap-heading dark">
-              <h1 class="primary-heading">Kontakt</h1>
+                <h1 class="primary-heading">Imprezy</h1>
+                <h3 class="secondary-heading">firmowe</h3>
+            <span class="seperator">* * *</span>
+            </div>
+                {% content 'imprezy_firmowe/Lewa_strona' %}
+            </div>
+            <div class="col-md-6 col-md-push-1 probootstrap-animate">
+                {% content('imprezy_firmowe/Prawa_strona') %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="probootstrap-section-bg overlay" style="background-image: url({{ 'assets/images/hero_bg_2.jpg'|theme}});"  data-stellar-background-ratio="0.5" data-section="events">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center probootstrap-animate">
+                <div class="probootstrap-heading">
+                    <h2 class="primary-heading">Galeria</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                    <a href="{{ 'assets/images/hero_bg_1.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
+                        <img src="{{ 'assets/images/hero_bg_1.jpg'|theme}}" itemprop="thumbnail" alt="Barman koktail" />
+                    </a>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="{{ 'assets/images/hero_bg_2.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
+                            <img src="{{ 'assets/images/hero_bg_2.jpg'|theme}}" itemprop="thumbnail" alt="Barman konkurs" />
+                        </a>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="{{ 'assets/images/hero_bg_3.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
+                            <img src="{{ 'assets/images/hero_bg_3.jpg'|theme}}" itemprop="thumbnail" alt="Barman drink" />
+                        </a>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="{{ 'assets/images/pierwszy_pasek.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
+                            <img src="{{ 'assets/images/pierwszy_pasek.jpg'|theme}}" itemprop="thumbnail" alt="Barman drink" />
+                        </a>
+                    </figure>
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                        <a href="{{ 'assets/images/drugi_pasek.jpg'|theme}}" itemprop="contentUrl" data-size="1920x1080">
+                            <img src="{{ 'assets/images/drugi_pasek.jpg'|theme}}" itemprop="thumbnail" alt="Barman drink" />
+                        </a>
+                    </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                        </button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                        </button>
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 probootstrap-animate">
+                <div class="probootstrap-block-image">
+                    <figure>
+                        <images src="{{ 'assets/images/img_square_2.jpg'|theme}}" alt="Barman Wadowice i okolice">
+                    </figure>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 probootstrap-animate">
+                <div class="probootstrap-block-image">
+                    <figure>
+                        <images src="{{ 'assets/images/img_square_3.jpg'|theme}}" alt="Barman przenośny bar">
+                    </figure>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 probootstrap-animate">
+                <div class="probootstrap-block-image">
+                    <figure>
+                        <images src="{{ 'assets/images/img_square_4.jpg'|theme}}" alt="Barman wesele">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="probootstrap-section probootstrap-bg-white" data-section="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 text-center probootstrap-animate">
+            <div class="probootstrap-heading dark">
+                <h1 class="primary-heading">Kontakt</h1>
             </div>
             <p>
-                {% content 'Kontakt' %}
+            {% content 'Kontakt' %}
             </p>
-          </div>
-          <div class="col-md-6 col-md-push-1 probootstrap-animate">
-            <form method="post" action="/contact" class="probootstrap-form">
-              <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-              <div class="form-group">
-                <label for="c_name">Imię i nazwisko</label>
-                <div class="form-field">
-                  <input type="text" id="c_name" name="c_name" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="c_email">Mail</label>
-                <div class="form-field">
-                  <input type="text" id="c_email" name="c_email" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="c_message">Wiadomość</label>
-                <div class="form-field">
-                  <textarea name="c_message" id="c_message" cols="30" rows="10" class="form-control"></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="submit" name="c_submit" id="c_submit" value="Wyślij wiadomość" class="btn btn-primary btn-lg">
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="col-md-6 col-md-push-1 probootstrap-animate">
+                <form method="post" action="/contact" class="probootstrap-form">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                    <div class="form-group">
+                        <label for="c_name">Imię i nazwisko</label>
+                        <div class="form-field">
+                            <input type="text" id="c_name" name="c_name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="c_email">Mail</label>
+                        <div class="form-field">
+                            <input type="text" id="c_email" name="c_email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="c_message">Wiadomość</label>
+                        <div class="form-field">
+                            <textarea name="c_message" id="c_message" cols="30" rows="10" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="c_submit" id="c_submit" value="Wyślij wiadomość" class="btn btn-primary btn-lg">
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <script src="{{ 'assets/vendor/jquery.js'|theme }}"></script>
-    <script src="{{ 'assets/vendor/bootstrap.js'|theme }}"></script>
-    <script src="{{ 'assets/js/app.js'|theme }}"></script>
-    <script src="{{ 'assets/js/scripts.js'|theme }}"></script>
-    <script src="{{ 'assets/js/app.js'|theme }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" charset="utf-8"></script>
+<script src="{{ 'assets/vendor/jquery.js'|theme }}"></script>
+<script src="{{ 'assets/vendor/bootstrap.js'|theme }}"></script>
+<script src="{{ 'assets/js/app.js'|theme }}"></script>
+<script src="{{ 'assets/js/scripts.js'|theme }}"></script>
+<script src="{{ 'assets/js/app.js'|theme }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" charset="utf-8"></script>
 
-    <script type="text/javascript">
-    var initPhotoSwipeFromDOM = function(gallerySelector) {
+<script type="text/javascript">
+var initPhotoSwipeFromDOM = function(gallerySelector) {
 
 // parse slide data (url, title, size ...) from DOM elements
 // (children of gallerySelector)
 var parseThumbnailElements = function(el) {
-  var thumbElements = el.childNodes,
-      numNodes = thumbElements.length,
-      items = [],
-      figureEl,
-      linkEl,
-      size,
-      item;
+var thumbElements = el.childNodes,
+numNodes = thumbElements.length,
+items = [],
+figureEl,
+linkEl,
+size,
+item;
 
-  for(var i = 0; i < numNodes; i++) {
+for(var i = 0; i < numNodes; i++) {
 
-      figureEl = thumbElements[i]; // <figure> element
+figureEl = thumbElements[i]; // <figure> element
 
-      // include only element nodes
-      if(figureEl.nodeType !== 1) {
-          continue;
-      }
+// include only element nodes
+if(figureEl.nodeType !== 1) {
+continue;
+}
 
-      linkEl = figureEl.children[0]; // <a> element
+linkEl = figureEl.children[0]; // <a> element
 
-      size = linkEl.getAttribute('data-size').split('x');
+size = linkEl.getAttribute('data-size').split('x');
 
-      // create slide object
-      item = {
-          src: linkEl.getAttribute('href'),
-          w: parseInt(size[0], 10),
-          h: parseInt(size[1], 10)
-      };
+// create slide object
+item = {
+src: linkEl.getAttribute('href'),
+w: parseInt(size[0], 10),
+h: parseInt(size[1], 10)
+};
 
 
 
-      if(figureEl.children.length > 1) {
-          // <figcaption> content
-          item.title = figureEl.children[1].innerHTML;
-      }
+if(figureEl.children.length > 1) {
+// <figcaption> content
+item.title = figureEl.children[1].innerHTML;
+}
 
-      if(linkEl.children.length > 0) {
-          // <img> thumbnail element, retrieving thumbnail url
-          item.msrc = linkEl.children[0].getAttribute('src');
-      }
+if(linkEl.children.length > 0) {
+// <img> thumbnail element, retrieving thumbnail url
+item.msrc = linkEl.children[0].getAttribute('src');
+}
 
-      item.el = figureEl; // save link to element for getThumbBoundsFn
-      items.push(item);
-  }
+item.el = figureEl; // save link to element for getThumbBoundsFn
+items.push(item);
+}
 
-  return items;
+return items;
 };
 
 // find nearest parent element
 var closest = function closest(el, fn) {
-  return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+return el && ( fn(el) ? el : closest(el.parentNode, fn) );
 };
 
 // triggers when user clicks on thumbnail
 var onThumbnailsClick = function(e) {
-  e = e || window.event;
-  e.preventDefault ? e.preventDefault() : e.returnValue = false;
+e = e || window.event;
+e.preventDefault ? e.preventDefault() : e.returnValue = false;
 
-  var eTarget = e.target || e.srcElement;
+var eTarget = e.target || e.srcElement;
 
-  // find root element of slide
-  var clickedListItem = closest(eTarget, function(el) {
-      return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
-  });
+// find root element of slide
+var clickedListItem = closest(eTarget, function(el) {
+return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+});
 
-  if(!clickedListItem) {
-      return;
-  }
+if(!clickedListItem) {
+return;
+}
 
-  // find index of clicked item by looping through all child nodes
-  // alternatively, you may define index via data- attribute
-  var clickedGallery = clickedListItem.parentNode,
-      childNodes = clickedListItem.parentNode.childNodes,
-      numChildNodes = childNodes.length,
-      nodeIndex = 0,
-      index;
+// find index of clicked item by looping through all child nodes
+// alternatively, you may define index via data- attribute
+var clickedGallery = clickedListItem.parentNode,
+childNodes = clickedListItem.parentNode.childNodes,
+numChildNodes = childNodes.length,
+nodeIndex = 0,
+index;
 
-  for (var i = 0; i < numChildNodes; i++) {
-      if(childNodes[i].nodeType !== 1) {
-          continue;
-      }
+for (var i = 0; i < numChildNodes; i++) {
+if(childNodes[i].nodeType !== 1) {
+continue;
+}
 
-      if(childNodes[i] === clickedListItem) {
-          index = nodeIndex;
-          break;
-      }
-      nodeIndex++;
-  }
+if(childNodes[i] === clickedListItem) {
+index = nodeIndex;
+break;
+}
+nodeIndex++;
+}
 
 
 
-  if(index >= 0) {
-      // open PhotoSwipe if valid index found
-      openPhotoSwipe( index, clickedGallery );
-  }
-  return false;
+if(index >= 0) {
+// open PhotoSwipe if valid index found
+openPhotoSwipe( index, clickedGallery );
+}
+return false;
 };
 
 // parse picture index and gallery index from URL (#&pid=1&gid=2)
 var photoswipeParseHash = function() {
-  var hash = window.location.hash.substring(1),
-  params = {};
+var hash = window.location.hash.substring(1),
+params = {};
 
-  if(hash.length < 5) {
-      return params;
-  }
+if(hash.length < 5) {
+return params;
+}
 
-  var vars = hash.split('&');
-  for (var i = 0; i < vars.length; i++) {
-      if(!vars[i]) {
-          continue;
-      }
-      var pair = vars[i].split('=');
-      if(pair.length < 2) {
-          continue;
-      }
-      params[pair[0]] = pair[1];
-  }
+var vars = hash.split('&');
+for (var i = 0; i < vars.length; i++) {
+if(!vars[i]) {
+continue;
+}
+var pair = vars[i].split('=');
+if(pair.length < 2) {
+continue;
+}
+params[pair[0]] = pair[1];
+}
 
-  if(params.gid) {
-      params.gid = parseInt(params.gid, 10);
-  }
+if(params.gid) {
+params.gid = parseInt(params.gid, 10);
+}
 
-  return params;
+return params;
 };
 
 var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
-  var pswpElement = document.querySelectorAll('.pswp')[0],
-      gallery,
-      options,
-      items;
+var pswpElement = document.querySelectorAll('.pswp')[0],
+gallery,
+options,
+items;
 
-  items = parseThumbnailElements(galleryElement);
+items = parseThumbnailElements(galleryElement);
 
-  // define options (if needed)
-  options = {
+// define options (if needed)
+options = {
 
-      // define gallery index (for URL)
-      galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+// define gallery index (for URL)
+galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 
-      getThumbBoundsFn: function(index) {
-          // See Options -> getThumbBoundsFn section of documentation for more info
-          var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
-              pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-              rect = thumbnail.getBoundingClientRect();
+getThumbBoundsFn: function(index) {
+// See Options -> getThumbBoundsFn section of documentation for more info
+var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+rect = thumbnail.getBoundingClientRect();
 
-          return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-      }
+return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+}
 
-  };
+};
 
-  // PhotoSwipe opened from URL
-  if(fromURL) {
-      if(options.galleryPIDs) {
-          // parse real index when custom PIDs are used
-          // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
-          for(var j = 0; j < items.length; j++) {
-              if(items[j].pid == index) {
-                  options.index = j;
-                  break;
-              }
-          }
-      } else {
-          // in URL indexes start from 1
-          options.index = parseInt(index, 10) - 1;
-      }
-  } else {
-      options.index = parseInt(index, 10);
-  }
+// PhotoSwipe opened from URL
+if(fromURL) {
+if(options.galleryPIDs) {
+// parse real index when custom PIDs are used
+// http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+for(var j = 0; j < items.length; j++) {
+if(items[j].pid == index) {
+options.index = j;
+break;
+}
+}
+} else {
+// in URL indexes start from 1
+options.index = parseInt(index, 10) - 1;
+}
+} else {
+options.index = parseInt(index, 10);
+}
 
-  // exit if index not found
-  if( isNaN(options.index) ) {
-      return;
-  }
+// exit if index not found
+if( isNaN(options.index) ) {
+return;
+}
 
-  if(disableAnimation) {
-      options.showAnimationDuration = 0;
-  }
+if(disableAnimation) {
+options.showAnimationDuration = 0;
+}
 
-  // Pass data to PhotoSwipe and initialize it
-  gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-  gallery.init();
+// Pass data to PhotoSwipe and initialize it
+gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+gallery.init();
 };
 
 // loop through all gallery elements and bind events
 var galleryElements = document.querySelectorAll( gallerySelector );
 
 for(var i = 0, l = galleryElements.length; i < l; i++) {
-  galleryElements[i].setAttribute('data-pswp-uid', i+1);
-  galleryElements[i].onclick = onThumbnailsClick;
+galleryElements[i].setAttribute('data-pswp-uid', i+1);
+galleryElements[i].onclick = onThumbnailsClick;
 }
 
 // Parse URL and open gallery if it contains #&pid=3&gid=1
 var hashData = photoswipeParseHash();
 if(hashData.pid && hashData.gid) {
-  openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
+openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
 }
 };
 
 // execute above function
 initPhotoSwipeFromDOM('.my-gallery');
-    </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98459603-2"></script>
-    	<script>
-    	  window.dataLayer = window.dataLayer || [];
-    	  function gtag(){dataLayer.push(arguments);}
-    	  gtag('js', new Date());
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-98459603-2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-    	  gtag('config', 'UA-98459603-2');
-    	</script>
+gtag('config', 'UA-98459603-2');
+</script>
 
-  </body>
+</body>
 </html>
